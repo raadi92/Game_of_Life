@@ -4,8 +4,8 @@ import Types.*;
 
 public class Cell {
 	private Status s;
-	private Cell [] neighbours = new Cell[8];
-
+	private Cell [] neighbours;
+	
 	public Cell() {
 		super();
 	}
@@ -32,6 +32,23 @@ public class Cell {
 		this.s = Status.ALIVE;
 	}	
 	
+	public void iterate() {
+		if (this.s.boolvalue()) {
+			//ALIVE
+			int count = this.count();
+			if (count<2 || count >3)	this.setDead();
+		} else
+			//DEAD
+			if (this.count() == 3) this.setAlive();
+			
+	}
+	
+	private int count() {
+		int count=0;
+		for (int i=0;i<this.neighbours.length;i++)
+			if (this.neighbours[i].isAlive()) count++;
+		return count;
+	}
 }
 
 /**
