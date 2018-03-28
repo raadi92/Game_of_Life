@@ -4,6 +4,21 @@ import Types.*;
 
 public class Cell {
 	private Status s;
+	private Cell [] neighbours = new Cell[8];
+
+	public Cell() {
+		super();
+	}
+
+	//		Getter and Setter 
+	
+	public Cell[] getNeighbours() {
+		return neighbours;
+	}
+
+	public void setNeighbours(Cell[] neighbours) {
+		this.neighbours = neighbours;
+	}
 
 	public boolean isAlive() {
 		return s.boolvalue();
