@@ -1,6 +1,21 @@
 package Cell;
 
+import Types.*;
+
 public class Cell {
+	private Status s;
+
+	public boolean isAlive() {
+		return s.boolvalue();
+	}
+
+	public void setDead() {
+		this.s = Status.DEAD;
+	}
+	
+	public void setAlive() {
+		this.s = Status.ALIVE;
+	}	
 	
 }
 
