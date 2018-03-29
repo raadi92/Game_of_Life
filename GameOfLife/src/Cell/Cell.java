@@ -5,6 +5,7 @@ import main.World;
 
 public class Cell {
 	private Status s;
+	private Status fS;	// Future Status
 	private Cell [] neighbours;
 	
 	public Cell() {
@@ -38,18 +39,32 @@ public class Cell {
 		if (this.isAlive()) {
 			//ALIVE
 			int count = this.count();
-			if (count<2 || count >3)	this.setDead();
+			if (count<2 || count >3)	this.futureDead();
 		} else
 			//DEAD
-			if (this.count() == 3) this.setAlive();
+			if (this.count() == 3) this.futureAlive();
 			
 	}
 	
+	private void futureAlive() {
+		this.fS = Status.ALIVE;
+	}
+
+	private void futureDead() {
+		this.fS = Status.DEAD;
+		
+	}
+
 	private int count() {
 		int count=0;
 		for (int i=0;i<this.neighbours.length;i++)
 			if (this.neighbours[i].isAlive()) count++;
 		return count;
+	}
+
+	public void evolve() {
+		this.s = this.fS;
+		
 	}
 }
 

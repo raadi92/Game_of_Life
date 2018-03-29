@@ -43,6 +43,9 @@ public class World {
 		for(int i=0; i<this.height;i++)
 			for (int j=0;j<this.width;j++)
 				world[i][j].iterate();
+		for(int i=0; i<this.height;i++)
+			for (int j=0;j<this.width;j++)
+				world[i][j].evolve();
 	}
 
 	public int getHeight() {
