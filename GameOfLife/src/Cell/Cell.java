@@ -1,6 +1,7 @@
 package Cell;
 
 import Types.*;
+import main.World;
 
 public class Cell {
 	private Status s;
@@ -8,6 +9,7 @@ public class Cell {
 	
 	public Cell() {
 		super();
+		this.s = Status.DEAD;
 	}
 
 	//		Getter and Setter 
@@ -33,7 +35,7 @@ public class Cell {
 	}	
 	
 	public void iterate() {
-		if (this.s.boolvalue()) {
+		if (this.isAlive()) {
 			//ALIVE
 			int count = this.count();
 			if (count<2 || count >3)	this.setDead();
