@@ -40,9 +40,11 @@ public class Cell {
 			//ALIVE
 			int count = this.count();
 			if (count<2 || count >3)	this.futureDead();
+			else this.futureAlive();
 		} else
 			//DEAD
 			if (this.count() == 3) this.futureAlive();
+			else this.futureDead();
 			
 	}
 	
